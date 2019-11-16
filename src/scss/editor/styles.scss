@@ -1,0 +1,101 @@
+.emails-editor {
+  width: 100%;
+  height: 96px;
+  padding: 8px 7px;
+  background: #ffffff;
+  border: 1px solid #c3c2cf;
+  border-radius: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: text;
+  & .emails-editor__email-editor {
+    font-size: inherit !important;
+  }
+  &__email {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 8px;
+    margin-bottom: 3px;
+    margin-right: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    background: rgba(102, 153, 255, 0.2);
+    border-radius: 100px;
+    cursor: default;
+    &--wrong {
+      background-color: transparent;
+      color: rgba(5, 0, 56, 0.6);
+      & .emails-editor__email-content {
+        border-bottom: 1px dashed #d14836;
+      }
+    }
+    &-content {
+      position: relative;
+      max-width: calc(100% - 8px);
+      max-height: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: 8px;
+    }
+    &-wrapper {
+      background: none;
+      &:first-child {
+        min-width: 140px;
+      }
+    }
+    &-input {
+      position: absolute;
+      left: 10px;
+      height: inherit;
+      line-height: inherit;
+      padding: 0;
+      margin: 0;
+      border: none;
+      width: calc(100% - 30px);
+      background-color: #fff;
+      opacity: 0;
+      z-index: 1;
+    }
+    &-remove {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center center;
+      background-image: url('../../images/remove.svg');
+      cursor: pointer;
+    }
+  }
+  &__input {
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    border-radius: 0;
+    -webkit-appearance: none;
+    user-select: text;
+    outline: none;
+  }
+  &__input-content {
+    opacity: 0;
+  }
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #827f9b;
+    border: 0 solid transparent;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: initial;
+  }
+}
