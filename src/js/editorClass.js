@@ -1,3 +1,5 @@
+import removeSvg from '../images/remove.svg'
+
 const EMAIL_REG_EXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const ENTER_KEY_CODE = 13
 const COMMA_KEY_CODE = 188
@@ -196,6 +198,7 @@ export default class EmailsEditor {
 
     const emailRemoveBtn = document.createElement('span')
     emailRemoveBtn.classList.add(this.getClassByName('emailRemoveBtn'))
+    emailRemoveBtn.innerHTML = removeSvg
 
     emailContainer.appendChild(emailContent)
     emailContainer.appendChild(emailRemoveBtn)

@@ -1,6 +1,7 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = {
   entry: {
     'emails-editor': './src/editor.js',
@@ -11,6 +12,9 @@ module.exports = {
     filename: '[name].js',
     library: 'EmailsEditor',
     libraryTarget: 'umd'
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
   },
   module: {
     rules: [
@@ -32,7 +36,9 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: 'style-loader'
+          },
           {
             loader: 'css-loader',
             options: { sourceMap: true }
@@ -53,24 +59,15 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].css'
-    }),
     new HtmlWebpackPlugin({
       title: 'emails-editor',
       template: path.resolve(__dirname, 'src', 'index.html'),
