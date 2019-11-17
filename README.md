@@ -73,7 +73,7 @@ on editor elements.
 
 | Name                                       | Description                                               | 
 | ------------------------------------------ | --------------------------------------------------------- |
-| [`emails:added`]                           | Gets fired when emails was added                          |
-| [`emails:removed`]                         | Gets fired when emails was removed                        |
+| `emails:added`                             | Gets fired when emails was added                          |
+| `emails:removed`                           | Gets fired when emails was removed                        |
 
 
