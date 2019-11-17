@@ -2,10 +2,9 @@ import removeSvg from '../images/remove.svg'
 
 const EMAIL_REG_EXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const ENTER_KEY_CODE = 13
-const COMMA_KEY_CODE = 188
 const BACKSPACE_KEY_CODE = 8
 const SPACEBAR_KEY_CODE = 32
-const INPUT_PLACEHOLDER = 'Add more people…'
+const INPUT_PLACEHOLDER = 'add more people…'
 const emailsAddEvent = { type: 'emails:added' }
 const emailsRemoveEvent = { type: 'emails:removed' }
 const defaultClasses = {
@@ -16,8 +15,7 @@ const defaultClasses = {
   emailRemoveBtn: 'emails-editor__email-remove',
   emailInput: 'emails-editor__email-input',
   emailWrong: 'emails-editor__email--wrong',
-  inputContent: 'emails-editor__input-content',
-  input: 'emails-editor__input'
+  inputContent: 'emails-editor__input-content'
 }
 
 /**
@@ -228,7 +226,6 @@ export default class EmailsEditor {
     const newEmailInput = document.createElement('input')
 
     newEmailInput.classList.add(this.getClassByName('emailInput'))
-    newEmailInput.classList.add(this.getClassByName('input'))
     this.setEmailInputPlaceholder(newEmailInput)
     newEmailInput.setAttribute('type', 'text')
 
@@ -277,13 +274,11 @@ export default class EmailsEditor {
     newEmailInput.addEventListener(
       'keyup',
       event => {
+        const isSpaceBarEvent = event.keyCode === SPACEBAR_KEY_CODE
+        const isCommaEvent = event.key === ','
         const email = event.target.value.replace(/^[,\s]$/gi, '')
         event.target.value = email
-        if (
-          email &&
-          (event.keyCode === COMMA_KEY_CODE ||
-            event.keyCode === SPACEBAR_KEY_CODE)
-        ) {
+        if (email && (isSpaceBarEvent || isCommaEvent)) {
           _this.addEmails(email)
           _this.resetEmailInput(event.target, newEmailContent)
         }
@@ -313,8 +308,7 @@ export default class EmailsEditor {
    * @param {HTMLElement} emailInput
    */
   setEmailInputPlaceholder(emailInput) {
-    const inputPlaceholder = this.emails.length > 0 ? '' : INPUT_PLACEHOLDER
-    emailInput.setAttribute('placeholder', inputPlaceholder)
+    emailInput.setAttribute('placeholder', INPUT_PLACEHOLDER)
   }
 
   /**

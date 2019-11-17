@@ -49,23 +49,24 @@
     }
     &-wrapper {
       background: none;
-      &:first-child {
-        min-width: 140px;
-      }
+      min-width: 140px;
     }
     &-input {
       position: absolute;
       top: 0;
-      left: 10px;
+      left: 5px;
       height: inherit;
-      width: calc(100% - 30px);
+      width: 100%;
       padding: 0;
       margin: 0;
       font-size: 14px;
       line-height: inherit;
-      border: none;
       background-color: transparent;
-      opacity: 0;
+      border: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      user-select: text;
+      outline: none;
       z-index: 1;
     }
     &-remove {
@@ -79,15 +80,6 @@
         height: inherit;
       }
     }
-  }
-  &__input {
-    left: 0;
-    width: 100%;
-    opacity: 1;
-    border-radius: 0;
-    -webkit-appearance: none;
-    user-select: text;
-    outline: none;
   }
   &__input-content {
     opacity: 0;
