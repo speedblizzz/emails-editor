@@ -8,8 +8,8 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    path: path.resolve(__dirname),
+    filename: '[name].build.js',
     library: 'EmailsEditor',
     libraryTarget: 'umd'
   },

@@ -40,9 +40,9 @@ export default class EmailsEditor {
       )
     }
     this.options = {
-      ...options,
       classes: {
-        ...defaultClasses
+        ...defaultClasses,
+        ...options.classes
       }
     }
     this.emails = []
