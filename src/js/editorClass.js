@@ -124,6 +124,7 @@ export default class EmailsEditor {
     const oldEmails = [...this.emails]
     const formatedNEwEmails = newEmails
       .split(',')
+      .filter(email => !!email.trim())
       .map(email => this.formatedEmail(email))
     this.emails = [...new Set([...this.emails, ...formatedNEwEmails])]
 
@@ -276,7 +277,7 @@ export default class EmailsEditor {
     newEmailInput.addEventListener(
       'keyup',
       event => {
-        const email = event.target.value.replace(/,/gi, '')
+        const email = event.target.value.replace(/^[,\s]$/gi, '')
         event.target.value = email
         if (
           email &&

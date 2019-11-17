@@ -726,7 +726,9 @@ function () {
 
       var oldEmails = _toConsumableArray(this.emails);
 
-      var formatedNEwEmails = newEmails.split(',').map(function (email) {
+      var formatedNEwEmails = newEmails.split(',').filter(function (email) {
+        return !!email.trim();
+      }).map(function (email) {
         return _this3.formatedEmail(email);
       });
       this.emails = _toConsumableArray(new Set([].concat(_toConsumableArray(this.emails), _toConsumableArray(formatedNEwEmails))));
@@ -890,7 +892,7 @@ function () {
       }, false); // Event listener for email adding after comma or spacebar was pressed
 
       newEmailInput.addEventListener('keyup', function (event) {
-        var email = event.target.value.replace(/,/gi, '');
+        var email = event.target.value.replace(/^[,\s]$/gi, '');
         event.target.value = email;
 
         if (email && (event.keyCode === COMMA_KEY_CODE || event.keyCode === SPACEBAR_KEY_CODE)) {
